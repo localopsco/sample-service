@@ -1,7 +1,7 @@
 console.log("args:", process.argv)
 console.log("Cron job started", new Date().toISOString())
 
-setInterval(() => {
+setTimeout(() => {
 	console.log("Cron job ended", new Date().toISOString())
-}, 2000)
+}, 10*1000)
 
