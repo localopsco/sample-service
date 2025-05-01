@@ -1,4 +1,7 @@
+console.log("args:", process.argv)
+console.log("worker started...")
+
 setInterval(() => {
-	console.log("worker working...", new Date().toISOString())
-}, 5000)
+	console.log("working...", new Date().toISOString())
+}, 2000)
 

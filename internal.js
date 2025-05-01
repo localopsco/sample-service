@@ -7,6 +7,7 @@ app.get('/', (req, res) => {
 })
 
 app.listen(port, () => {
-	console.log("Sample app started on port:", port)
+	console.log("Internal service args:", process.argv)
+	console.log("Internal service running on port:", port)
 })
 

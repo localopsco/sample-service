@@ -1,3 +1,4 @@
+console.log("args:", process.argv)
 console.log("Cron job started", new Date().toISOString())
 
 setInterval(() => {
