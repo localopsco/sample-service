@@ -4,7 +4,7 @@ const port = 3000
 
 app.get('/', (req, res) => {
 	console.log("Request got at", new Date().toISOString())
-	res.send('Hello there. ENV: ' + process.env.ENV)
+	res.send('Hello there.. ENV: ' + process.env.ENV)
 })
 
 app.listen(port, () => {
