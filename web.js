@@ -3,7 +3,7 @@ const app = express()
 const port = 3000
 
 app.get('/', (req, res) => {
-	console.log("Request got at", new Date().toISOString())
+	console.log("Request received at", new Date().toISOString())
 	res.send('Hello.. ENV: ' + process.env.ENV)
 })
 
