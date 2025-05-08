@@ -3,8 +3,8 @@ const app = express()
 const port = 3000
 
 app.get('/', (req, res) => {
-	console.log("Request received at", new Date().toISOString())
-	res.send('Hello.. ENV: ' + process.env.ENV)
+	console.log("Request received:", new Date().toISOString())
+	res.send('Hello there.. ENV: ' + process.env.ENV)
 })
 
 app.listen(port, () => {
