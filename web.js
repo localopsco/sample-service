@@ -1,10 +1,14 @@
 const express = require('express')
+const { formatRelative } = require("date-fns");
+
 const app = express()
 const port = 3000
 
+const serviceStartTime = new Date()
+
 app.get('/', (req, res) => {
-	console.log("Request received at:", new Date().toISOString())
-	res.send('Hello there.. ENV: ' + process.env.ENV)
+	console.log("Request got at", new Date().toISOString())
+	res.send(`Hello there.. Env:+ ${process.env.ENV} \n\nStarted at: ${formatRelative(serviceStartTime, new Date())}`)
 })
 
 app.listen(port, () => {
