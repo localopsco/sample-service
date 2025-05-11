@@ -8,7 +8,7 @@ const serviceStartTime = new Date()
 
 app.get('/', (req, res) => {
 	console.log("Request got at", new Date().toISOString())
-	res.send(`Hello there.. Env:+ ${process.env.ENV} \n\nStarted at: ${formatRelative(serviceStartTime, new Date())}`)
+	res.send(`Hi.. Env:+ ${process.env.ENV} \n\nStarted at: ${formatRelative(serviceStartTime, new Date())}`)
 })
 
 app.listen(port, () => {
