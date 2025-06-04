@@ -1,0 +1,81 @@
+{
+    "dependencies": {
+        "s3": {
+            "buckets": [
+                {
+                    "id": "test123",
+                    "prefix": "testdep123",
+                    "exports": {
+                        "MY_BUCKET_NAME1": "$name",
+                        "MY_BUCKET_ARN1": "$arn"
+                    }
+                }
+            ]
+        },
+        "sns": {
+            "topics": [
+                {
+                    "id": "test123",
+                    "prefix": "testdep123",
+                    "exports": {
+                        "MY_SNS_TOPIC_NAME1": "$name",
+                        "MY_SNS_TOPIC_ARN1": "$arn"
+                    }
+                }
+            ]
+        },
+        "sqs": {
+            "queues": [
+                {
+                    "id": "test123",
+                    "prefix": "testdep123",
+                    "exports": {
+                        "MY_SQS_QUEUE_NAME1": "$name",
+                        "MY_SQS_QUEUE_ARN1": "$arn"
+                    }
+                }
+            ]
+        },
+        "rds": {
+            "instances": [
+                {
+                    "id": "test123",
+                    "prefix": "testdep123",
+                    "engine": "postgres",
+                    "version": "17.5",
+                    "storage_gb": 10,
+                    "instance_type": "db.t4g.small",
+                    "publicly_accessible": false,
+                    "exports": {
+                        "MY_RDS_INSTANCE_NAME": "$name",
+                        "MY_RDS_INSTANCE_ARN": "$arn",
+                        "MY_RDS_INSTANCE_ENDPOINT": "$endpoint",
+                        "MY_RDS_INSTANCE_ADDRESS": "$address",
+                        "MY_RDS_INSTANCE_USERNAME": "$username",
+                        "MY_RDS_INSTANCE_PASSWORD_ARN": "$passwordArn",
+                        "MY_RDS_INSTANCE_DB_NAME": "$dbName"
+                    }
+                }
+            ]
+        },
+        "elasticache": {
+            "clusters": [
+                {
+                    "id": "test123",
+                    "prefix": "testdep123",
+                    "engine": "redis",
+                    "version": "7.0",
+                    "instance_type": "cache.t4g.small",
+                    "num_nodes": 1,
+                    "exports": {
+                        "MY_ELASTICACHE_CLUSTER_NAME": "$name",
+                        "MY_ELASTICACHE_CLUSTER_ARN": "$arn",
+                        "MY_ELASTICACHE_CLUSTER_ENDPOINT": "$endpoint",
+                        "MY_ELASTICACHE_CLUSTER_ADDRESS": "$address",
+                        "MY_ELASTICACHE_CLUSTER_PORT": "$port"
+                    }
+                }
+            ]
+        }
+    }
+}
