@@ -9,6 +9,7 @@ const serviceStartTime = new Date()
 app.get('/', (req, res) => {
 	console.log("Request received at", new Date().toISOString())
 	console.log("Processing request at", new Date().toISOString())
+	console.log("using token:", process.env.Token) //todo: remove this before release
 	res.send(`<h2>Hello..Env:${process.env.ENV} \n\nStarted at: ${formatRelative(serviceStartTime, new Date())}</h2>`)
 })
 
