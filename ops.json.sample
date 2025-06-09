@@ -1,4 +1,10 @@
 {
+    "cron": [
+        {
+            "schedule": "*/2 * * * *",
+            "path": "/api/v1/do-it-every-2mins",
+        }
+    ],
     "dependencies": {
         "s3": {
             "buckets": [
