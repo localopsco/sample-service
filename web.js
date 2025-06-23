@@ -1,4 +1,3 @@
-//runs express app
 const express = require('express')
 const { formatRelative } = require("date-fns");
 
