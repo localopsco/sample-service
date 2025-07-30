@@ -1,0 +1,59 @@
+{
+    "previews": {
+      "dependencies": {
+        "db": [
+          {
+            "id": "db",
+            "prefix": "db",
+            "engine": "postgres",
+            "version": "17.5",
+            "exports": {
+              "DB_HOST": "$host",
+              "DB_PORT": "$port",
+              "DB_USER": "$user",
+              "DB_NAME": "$db",
+              "DB_PASS": "$pass"
+            }
+          }
+        ],
+        "cache": [
+          {
+            "id": "redis",
+            "prefix": "redis",
+            "engine": "redis",
+            "version": "8.0.3",
+            "exports": {
+              "REDIS_HOST": "$host",
+              "REDIS_PORT": "$port"
+            }
+          }
+        ],
+        "queues": [
+          {
+            "id": "rabbitmq",
+            "prefix": "rabbitmq",
+            "engine": "rabbitmq",
+            "version": "4.1.2",
+            "exports": {
+              "QUEUE_HOST": "$host",
+              "QUEUE_PORT": "$port",
+              "QUEUE_VHOST": "$vhost",
+              "QUEUE_USER": "$user",
+              "QUEUE_PASS": "$pass"
+            }
+          }
+        ]
+      },
+      "workers": [
+        {
+          "id": "worker",
+          "prefix": "worker",
+          "cmd": "node server.js",
+          "env": {
+            "variable": "value"
+          },
+          "count": 1
+        }
+      ]
+    }
+  }
