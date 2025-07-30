@@ -48,7 +48,7 @@
         {
           "id": "worker",
           "prefix": "worker",
-          "cmd": "node server.js",
+          "cmd": "node worker.js",
           "env": {
             "variable": "value"
           },
