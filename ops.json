@@ -1,4 +1,15 @@
 {
+    "init": [
+        {
+            "id": "migrate",
+            "prefix": "migrate",
+            "cmd": "node job.js",
+            "env": {
+                "variable": "migrate"
+            }
+        }
+    ],
+
     "previews": {
       "dependencies": {
         "db": [
