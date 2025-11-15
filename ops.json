@@ -1,0 +1,38 @@
+{
+    "dependencies": {
+        "s3": {
+            "buckets": [
+                {
+                    "id": "reports",
+                    "prefix": "reports",
+                    "exports": {
+                        "REPORT_BUCKET_NAME": "$name",
+                        "REPORT_BUCKET_ARN": "$arn"
+                    }
+                }
+            ]
+        },
+        "rds": {
+            "instances": [
+                {
+                    "id": "maindb",
+                    "prefix": "maindb",
+                    "engine": "postgres",
+                    "version": "17.5",
+                    "storage_gb": 10,
+                    "instance_type": "db.t4g.small",
+                    "publicly_accessible": false,
+                    "exports": {
+                        "RDS_NAME": "$name",
+                        "RDS_ARN": "$arn",
+                        "RDS_ENDPOINT": "$endpoint",
+                        "RDS_ADDRESS": "$address",
+                        "RDS_USERNAME": "$username",
+                        "RDS_PASSWORD_ARN": "$passwordArn",
+                        "RDS_DB_NAME": "$dbName"
+                    }
+                }
+            ]
+        }
+    }
+}
