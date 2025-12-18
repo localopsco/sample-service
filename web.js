@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
 	console.log("Request received at", new Date().toISOString())
 	console.log("Processing request at", new Date().toISOString())
 	res.json({
-		message: "hello",
+		message: "hi there! This is a demo web service.",
 		env: process.env.ENV,
 		startAt: formatRelative(serviceStartTime, new Date()),
 		secret: process.env.SECRET_KEY,
