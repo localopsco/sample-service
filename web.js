@@ -8,7 +8,7 @@ const serviceStartTime = new Date()
 
 app.get('/', (req, res) => {
 	console.log("Request received at", new Date().toISOString())
-	console.log("Processing at", new Date().toISOString())
+	console.log("(Mar6) Processing at", new Date().toISOString())
 	res.json({
 		message: "hello. this is a demo web service. lalala",
 		env: process.env.ENV,
