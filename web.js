@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 		<div style="font-family: sans-serif; max-width: 600px; margin: 40px auto; padding: 30px; background: #f0f4ff; border: 2px solid #4a6cf7; border-radius: 12px; box-shadow: 0 4px 12px rgba(74,108,247,0.15);">
 			<h1 style="color: #4a6cf7; margin-top: 0;">Ping Pong Service 🏓</h1>
 			<p style="color: #555; font-size: 1.1em;">${message}</p>
-			<p style="color: #888; font-style: italic;">Know your IP and User-agent/Browser</p>
+			<p style="color: #888; font-style: italic;">Know your IP and Browser</p>
 			<table style="width: 100%; border-collapse: collapse;">
 				<tr><td style="padding: 10px; border-bottom: 1px solid #ccd5f7; font-weight: bold; color: #333;">Environment</td><td style="padding: 10px; border-bottom: 1px solid #ccd5f7;">${process.env.ENV}</td></tr>
 				<tr><td style="padding: 10px; border-bottom: 1px solid #ccd5f7; font-weight: bold; color: #333;">Started</td><td style="padding: 10px; border-bottom: 1px solid #ccd5f7;">${formatRelative(serviceStartTime, new Date())}</td></tr>
