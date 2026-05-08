@@ -38,6 +38,11 @@ app.get('/', (req, res) => {
 	`)
 })
 
+app.get('/crash', (req, res) => {
+  const fs = require('fs')
+  fs.readFileSync('/nonexistent/file/that/does/not/exist.txt')
+})
+
 app.listen(port, () => {
   console.log("\nWeb service arg:", process.argv)
   console.log("\nWeb service env:", process.env.ENV)
