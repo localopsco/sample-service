@@ -1,5 +1,5 @@
 {
   "read_timeout": 100,
   "send_timeout": 100,
-  "connect_timeout": 100
+  "connection_timeout": 100
 }
