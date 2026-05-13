@@ -1,0 +1,7 @@
+{
+    "metrics": {
+        "endpoint": "/metrics",
+        "interval": 2,
+        "port": 9090
+    }
+}
