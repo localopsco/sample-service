@@ -1,5 +1,5 @@
 {
-  "metrics": {
+  "metrics-typo": {
     "endpoint": "/metrics",
     "interval": 5,
     "port": 9090
