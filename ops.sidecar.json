@@ -1,0 +1,22 @@
+{
+  "sidecars": [
+    {
+      "id": "log-shipper",
+      "image": "grafana/promtail:2.9.0",
+      "cmd": "-config.file=/etc/promtail/config.yaml",
+      "config_files": [
+        {
+          "mount_path": "/etc/promtail/config.yaml",
+          "content_file": "promtail.yaml"
+        }
+      ],
+      "volumes": [
+        {
+          "name": "app-logs",
+          "mount_path": "/var/log/app",
+          "main_container_mount_path": "/var/log/app"
+        }
+      ]
+    }
+  ]
+}
