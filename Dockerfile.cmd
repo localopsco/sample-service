@@ -9,5 +9,4 @@ COPY . .
 
 EXPOSE 3000
 
-ENTRYPOINT ["node"]
-CMD ["web.js"]
+CMD ["node", "web.js"]
