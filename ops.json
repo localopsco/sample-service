@@ -1,0 +1,35 @@
+{
+    "dependencies": {
+        "s3": {
+            "buckets": [
+                {
+                    "id": "tests3123",
+                    "prefix": "testdep123",
+                    "exports": {
+                        "MY_BUCKET_NAME1": "$name",
+                        "MY_BUCKET_ARN1": "$arn"
+                    }
+                }
+            ]
+        },
+        "elasticache": {
+            "clusters": [
+                {
+                    "id": "testredis123",
+                    "prefix": "testredis123",
+                    "engine": "valkey",
+                    "version": "7.2",
+                    "instance_type": "cache.t4g.small",
+                    "num_nodes": 1,
+                    "exports": {
+                        "MY_ELASTICACHE_CLUSTER_NAME": "$name",
+                        "MY_ELASTICACHE_CLUSTER_ARN": "$arn",
+                        "MY_ELASTICACHE_CLUSTER_ENDPOINT": "$endpoint",
+                        "MY_ELASTICACHE_CLUSTER_ADDRESS": "$address",
+                        "MY_ELASTICACHE_CLUSTER_PORT": "$port"
+                    }
+                }
+            ]
+        }
+    }
+}
