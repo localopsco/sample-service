@@ -66,29 +66,31 @@
             ]
         },
         "opensearch": {
-            "domains": {
-                "id": "testopensearch",
-                "prefix": "testopensearch",
-                "engine_version": "OpenSearch_2.11",
-                "instance_type": "t3.small.search", 
-                "node_count": 3,
-                "ebs_volume_size": 20,
-                "ebs_volume_type": "gp3",
-                "dedicated_master": false,
-                "publicly_accessible": false,
-                "advanced_options": [],
-                "exports": {
-                    "MY_OPENSEARCH_NAME":         "$name",
-					"MY_OPENSEARCH_ARN":          "$arn",
-					"MY_OPENSEARCH_ENDPOINT":     "$endpoint",
-					"MY_OPENSEARCH_ADDRESS":      "$address",
-					"MY_OPENSEARCH_PORT":         "$port",
-					"MY_OPENSEARCH_USERNAME":     "$username",
-					"MY_OPENSEARCH_PASSWORD_ARN": "$passwordArn",
-					"MY_OPENSEARCH_PASSWORD":     "$password",
-					"MY_OPENSEARCH_DSN":          "$dsn"
+            "domains": [
+                {
+                    "id": "testopensearch",
+                    "prefix": "testopensearch",
+                    "engine_version": "OpenSearch_2.11",
+                    "instance_type": "t3.small.search", 
+                    "node_count": 3,
+                    "ebs_volume_size": 20,
+                    "ebs_volume_type": "gp3",
+                    "dedicated_master": false,
+                    "publicly_accessible": false,
+                    "advanced_options": [],
+                    "exports": {
+                        "MY_OPENSEARCH_NAME":         "$name",
+                        "MY_OPENSEARCH_ARN":          "$arn",
+                        "MY_OPENSEARCH_ENDPOINT":     "$endpoint",
+                        "MY_OPENSEARCH_ADDRESS":      "$address",
+                        "MY_OPENSEARCH_PORT":         "$port",
+                        "MY_OPENSEARCH_USERNAME":     "$username",
+                        "MY_OPENSEARCH_PASSWORD_ARN": "$passwordArn",
+                        "MY_OPENSEARCH_PASSWORD":     "$password",
+                        "MY_OPENSEARCH_DSN":          "$dsn"
+                    }
                 }
-            }
+            ]
         }
     }
 }
