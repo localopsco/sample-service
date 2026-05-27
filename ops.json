@@ -23,11 +23,11 @@
                     "db_name": "mydb",
                     "instance_type": "db.t4g.small",
                     "publicly_accessible": false,
-                    "parameters": {
+                    "parameters": [{
                         "name":"shared_preload_libraries",
                         "value": "pg_stat_statements,pg_cron",
                         "apply_method": "pending-reboot"
-                    },
+                    }],
                     "exports": {
                         "MY_RDS_INSTANCE_NAME": "$name",
                         "MY_RDS_INSTANCE_ARN": "$arn",
@@ -51,10 +51,10 @@
                     "version": "7.0",
                     "instance_type": "cache.t4g.small",
                     "num_nodes": 1,
-                    "parameters": {
+                    "parameters": [{
                         "name":"maxmemory-policy",
                         "value": "volatile-lru"
-                    },
+                    }],
                     "exports": {
                         "MY_ELASTICACHE_CLUSTER_NAME": "$name",
                         "MY_ELASTICACHE_CLUSTER_ARN": "$arn",
