@@ -1,0 +1,94 @@
+{
+    "dependencies": {
+        "s3": {
+            "buckets": [
+                {
+                    "id": "testmay28s3",
+                    "prefix": "testmay28s3",
+                    "exports": {
+                        "MY_BUCKET_NAME1": "$name",
+                        "MY_BUCKET_ARN1": "$arn"
+                    }
+                }
+            ]
+        },
+        "rds": {
+            "instances": [
+                {
+                    "id": "testmay28s3",
+                    "prefix": "testmay28s3",
+                    "engine": "postgres",
+                    "version": "17.5",
+                    "storage_gb": 10,
+                    "db_name": "mydb",
+                    "instance_type": "db.t4g.small",
+                    "publicly_accessible": false,
+                    "parameters": {
+                        "name":"shared_preload_libraries",
+                        "value": "pg_stat_statements,pg_cron",
+                        "apply_method": "pending-reboot"
+                    },
+                    "exports": {
+                        "MY_RDS_INSTANCE_NAME": "$name",
+                        "MY_RDS_INSTANCE_ARN": "$arn",
+                        "MY_RDS_INSTANCE_ENDPOINT": "$endpoint",
+                        "MY_RDS_INSTANCE_ADDRESS": "$address",
+                        "MY_RDS_INSTANCE_USERNAME": "$username",
+                        "MY_RDS_INSTANCE_PASSWORD_ARN": "$passwordArn",
+                        "MY_RDS_INSTANCE_DB_NAME": "$dbName",
+                        "MY_RDS_INSTANCE_PASSWORD": "$password",
+                        "MY_RDS_INSTANCE_DSN": "$dsn"
+                    }
+                }
+            ]
+        },
+        "elasticache": {
+            "clusters": [
+                {
+                    "id": "test123",
+                    "prefix": "testdep123",
+                    "engine": "redis",
+                    "version": "7.0",
+                    "instance_type": "cache.t4g.small",
+                    "num_nodes": 1,
+                    "parameters": {
+                        "name":"maxmemory-policy",
+                        "value": "volatile-lru"
+                    },
+                    "exports": {
+                        "MY_ELASTICACHE_CLUSTER_NAME": "$name",
+                        "MY_ELASTICACHE_CLUSTER_ARN": "$arn",
+                        "MY_ELASTICACHE_CLUSTER_ENDPOINT": "$endpoint",
+                        "MY_ELASTICACHE_CLUSTER_ADDRESS": "$address",
+                        "MY_ELASTICACHE_CLUSTER_PORT": "$port"
+                    }
+                }
+            ]
+        },
+        "opensearch": {
+            "domains": {
+                "id": "testopensearch",
+                "prefix": "testopensearch",
+                "engine_version": "OpenSearch_2.11",
+                "instance_type": "t3.small.search", 
+                "node_count": 3,
+                "ebs_volume_size": 20,
+                "ebs_volume_type": "gp3",
+                "dedicated_master": false,
+                "publicly_accessible": false,
+                "advanced_options": [],
+                "exports": {
+                    "MY_OPENSEARCH_NAME":         "$name",
+					"MY_OPENSEARCH_ARN":          "$arn",
+					"MY_OPENSEARCH_ENDPOINT":     "$endpoint",
+					"MY_OPENSEARCH_ADDRESS":      "$address",
+					"MY_OPENSEARCH_PORT":         "$port",
+					"MY_OPENSEARCH_USERNAME":     "$username",
+					"MY_OPENSEARCH_PASSWORD_ARN": "$passwordArn",
+					"MY_OPENSEARCH_PASSWORD":     "$password",
+					"MY_OPENSEARCH_DSN":          "$dsn"
+                }
+            }
+        }
+    }
+}
