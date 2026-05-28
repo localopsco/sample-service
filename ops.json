@@ -6,7 +6,8 @@
                     "id": "testsecrets",
                     "prefix": "testsecrets",
                     "exports": {
-                        "MY_BUCKET_NAME1": "$name"
+                        "MY_BUCKET_NAME1": "$name",
+                        "MY_BUCKET_ARN1": "$arn"
                     }
                 }
             ]
