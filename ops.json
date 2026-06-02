@@ -3,7 +3,7 @@
         "s3": {
             "buckets": [
                 {
-                    "id": "testjune2s3",
+                    "id": "testjune2s2",
                     "prefix": "testjune2s3",
                     "exports": {
                         "MY_BUCKET_NAME1": "$name",
@@ -16,7 +16,7 @@
             "instances": [
                 {
                     "id": "test",
-                    "prefix": "testjune2rds1",
+                    "prefix": "testjune2rds2",
                     "engine": "postgres",
                     "version": "17.5",
                     "storage_gb": 10,
@@ -28,7 +28,6 @@
                         "value": "pg_stat_statements,pg_cron",
                         "apply_method": "pending-reboot"
                     }],
-                    "managed_password": false,
                     "exports": {
                         "MY_RDS_INSTANCE_NAME": "$name",
                         "MY_RDS_INSTANCE_ARN": "$arn",
