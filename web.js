@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
   console.log("Processing at", new Date().toISOString());
   res.send(`
 		<div style="font-family: sans-serif; max-width: 600px; margin: 40px auto; padding: 30px; background: #f0f4ff; border: 2px solid #4a6cf7; border-radius: 12px; box-shadow: 0 4px 12px rgba(74,108,247,0.15);">
-			<h1 style="color: #4a6cf7; margin-top: 0;">Ping Pong Service 🏓</h1>
+			<h1 style="color: #4a6cf7; margin-top: 0;">Ping Pong Service by Raje 🏓</h1>
 			<p style="color: #555; font-size: 1.1em;">${message}</p>
 			<p style="color: #888; font-style: italic;">Know your IP and Browser</p>
 			<table style="width: 100%; border-collapse: collapse;">
