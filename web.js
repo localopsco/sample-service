@@ -23,6 +23,8 @@ const funMessages = [
 app.get('/', (req, res) => {
   const message = funMessages[Math.floor(Math.random() * funMessages.length)]
   console.log("Request received at", new Date().toISOString())
+  console.log("x-forwarded-for:", req.get('x-forwarded-for'))
+  console.log("x-real-ip:", req.get('x-real-ip'))
   console.log("Processing at", new Date().toISOString())
   res.send(`
 		<div style="font-family: sans-serif; max-width: 600px; margin: 40px auto; padding: 30px; background: #f0f4ff; border: 2px solid #4a6cf7; border-radius: 12px; box-shadow: 0 4px 12px rgba(74,108,247,0.15);">
