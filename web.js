@@ -35,7 +35,9 @@ app.get('/', (req, res) => {
 				<tr><td style="padding: 10px; border-bottom: 1px solid #ccd5f7; font-weight: bold; color: #333;">Environment</td><td style="padding: 10px; border-bottom: 1px solid #ccd5f7;">${process.env.ENV}</td></tr>
 				<tr><td style="padding: 10px; border-bottom: 1px solid #ccd5f7; font-weight: bold; color: #333;">Started</td><td style="padding: 10px; border-bottom: 1px solid #ccd5f7;">${formatRelative(serviceStartTime, new Date())}</td></tr>
 				<tr><td style="padding: 10px; border-bottom: 1px solid #ccd5f7; font-weight: bold; color: #333;">Browser</td><td style="padding: 10px; border-bottom: 1px solid #ccd5f7;">${req.get('User-Agent')}</td></tr>
-				<tr><td style="padding: 10px; font-weight: bold; color: #333;">IP</td><td style="padding: 10px;">${req.ip}</td></tr>
+				<tr><td style="padding: 10px; border-bottom: 1px solid #ccd5f7; font-weight: bold; color: #333;">IP</td><td style="padding: 10px; border-bottom: 1px solid #ccd5f7;">${req.ip}</td></tr>
+				<tr><td style="padding: 10px; border-bottom: 1px solid #ccd5f7; font-weight: bold; color: #333;">X-Forwarded-For</td><td style="padding: 10px; border-bottom: 1px solid #ccd5f7;">${req.get('x-forwarded-for')}</td></tr>
+				<tr><td style="padding: 10px; font-weight: bold; color: #333;">X-Real-IP</td><td style="padding: 10px;">${req.get('x-real-ip')}</td></tr>
 			</table>
 		</div>
 	`)
