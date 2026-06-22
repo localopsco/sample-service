@@ -1,0 +1,76 @@
+{
+  "dependencies": {
+    "gcp:storage": {
+      "buckets": [
+        {
+          "id": "uploads",
+          "exports": {
+            "UPLOADS_BUCKET": "$name",
+            "UPLOADS_BUCKET_URL": "$url"
+          }
+        }
+      ]
+    },
+
+    "gcp:pubsub": {
+      "topics": [
+        {
+          "id": "events",
+          "exports": {
+            "EVENTS_TOPIC": "$name",
+            "EVENTS_TOPIC_ID": "$id"
+          },
+          "subscriptions": [
+            {
+              "id": "events-worker",
+              "ack_deadline_seconds": 30,
+              "exports": {
+                "EVENTS_SUB": "$name",
+                "EVENTS_SUB_ID": "$id"
+              }
+            }
+          ]
+        }
+      ]
+    },
+
+    "gcp:cloudsql": {
+      "instances": [
+        {
+          "id": "main",
+          "engine": "postgres",
+          "version": "15",
+          "tier": "db-custom-1-3840",
+          "disk_gb": 10,
+          "db_name": "appdb",
+          "exports": {
+            "DATABASE_URL": "$dsn",
+            "DB_HOST": "$address",
+            "DB_ENDPOINT": "$endpoint",
+            "DB_USER": "$username",
+            "DB_PASSWORD": "$password",
+            "DB_NAME": "$dbName",
+            "DB_CONNECTION_NAME": "$connectionName"
+          }
+        }
+      ]
+    },
+
+    "gcp:memorystore": {
+      "instances": [
+        {
+          "id": "cache",
+          "version": "REDIS_7_0",
+          "memory_size_gb": 1,
+          "tier": "BASIC",
+          "exports": {
+            "REDIS_HOST": "$host",
+            "REDIS_PORT": "$port",
+            "REDIS_ENDPOINT": "$endpoint"
+            "REDIS_NAME": "$name"
+          }
+        }
+      ]
+    }
+  }
+}
