@@ -66,7 +66,7 @@
           "exports": {
             "REDIS_HOST": "$host",
             "REDIS_PORT": "$port",
-            "REDIS_ENDPOINT": "$endpoint"
+            "REDIS_ENDPOINT": "$endpoint",
             "REDIS_NAME": "$name"
           }
         }
