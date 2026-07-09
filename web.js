@@ -43,9 +43,51 @@ app.get('/', (req, res) => {
 	`)
 })
 
+const crashReasons = [
+  {
+    name: 'missing file',
+    fail: () => {
+      const fs = require('fs')
+      fs.readFileSync('/nonexistent/file/that/does/not/exist.txt')
+    },
+  },
+  {
+    name: 'null pointer',
+    fail: () => {
+      const data = null
+      console.log(data.property)
+    },
+  },
+  {
+    name: 'invalid JSON',
+    fail: () => {
+      JSON.parse('{not valid json')
+    },
+  },
+  {
+    name: 'undefined function',
+    fail: () => {
+      undefinedFunction()
+    },
+  },
+  {
+    name: 'simulated internal error',
+    fail: () => {
+      throw new Error('Simulated internal service failure')
+    },
+  },
+]
+
 app.get('/crash', (req, res) => {
-  const fs = require('fs')
-  fs.readFileSync('/nonexistent/file/that/does/not/exist.txt')
+  const shuffled = [...crashReasons].sort(() => Math.random() - 0.5)
+  const count = 2 + Math.floor(Math.random() * 2) // 2 or 3
+  const selected = shuffled.slice(0, count)
+
+  console.log(`/crash hit — reasons in play: ${selected.map(r => r.name).join(', ')}`)
+
+  const chosen = selected[Math.floor(Math.random() * selected.length)]
+  console.log(`/crash failing with: ${chosen.name}`)
+  chosen.fail()
 })
 
 app.listen(port, () => {
