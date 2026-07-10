@@ -8,7 +8,7 @@ const port = 3000
 const serviceStartTime = new Date()
 
 const funMessages = [
-  "Im not a regular server, I'm a cool server 😎",
+  "I'm not a regular server, I'm a cool server 😎",
   "Serving bytes and good vibes since startup ✨",
   "You again? I'm flattered 🥰",
   "Plot twist: the real API was the friends we made along the way 🤝",
