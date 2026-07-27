@@ -4,7 +4,7 @@
       "type": "service",
       "id": "wait_for_service",
       "prefix": "service_wait",
-      "service": "$svc-123",
+      "service": "$svc-9f1f",
       "health": {
         "path": "/health",
         "status": 200
