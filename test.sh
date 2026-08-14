@@ -1,5 +1,5 @@
 #!/bin/bash
-# test
+# test sh
 
 # Set the file name
 FILE="timestamp.txt"
