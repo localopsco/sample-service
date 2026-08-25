@@ -1,6 +1,7 @@
 {
     "init": [
         {
+            "id": "migrate",
             "prefix": "migrate",
             "once": true,
             "cmd": "node migrate.js"
