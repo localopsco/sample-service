@@ -1,0 +1,8 @@
+{
+  "volumes": [
+    { "name": "tmp",          "mount_path": "/tmp",              "kind": "mem" },
+    { "name": "run",          "mount_path": "/var/run",          "kind": "mem" },
+    { "name": "tmpfiles",     "mount_path": "/tmpfiles", "kind": "disk",
+      "size": "1Gi", "expose": true }
+  ]
+}
