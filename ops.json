@@ -1,5 +1,5 @@
 {
-    "volumes": [
-          { "name": "badvol", "mount_path": "/badvol" }
-    ]
+      "volumes": [
+              { "name": "cachevol", "mount_path": "/cachevol", "kind": "cache" }
+      ]
 }
