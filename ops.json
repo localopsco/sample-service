@@ -1,5 +1,5 @@
 {
-        "volumes": [
-                  { "name": "yes", "mount_path": "/yesvol", "kind": "mem" }
-        ]
+          "volumes": [
+                      { "name": "numsecret", "mount_path": "/numsecret", "kind": "secret", "secret_name": "12345" }
+          ]
 }
