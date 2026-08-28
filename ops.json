@@ -1,5 +1,5 @@
 {
-      "volumes": [
-              { "name": "Bad_Name", "mount_path": "/badname", "kind": "mem" }
-      ]
+        "volumes": [
+                  { "name": "relpath", "mount_path": "relative/path", "kind": "mem" }
+        ]
 }
