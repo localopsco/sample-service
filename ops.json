@@ -1,9 +1,5 @@
 {
-  "volumes": [
-    { "name": "tmp",          "mount_path": "/tmp",              "kind": "mem", "size": "100Mi" },
-    { "name": "run",          "mount_path": "/var/run",          "kind": "mem" },
-    { "name": "tmpfiles",     "mount_path": "/tmpfiles", "kind": "disk",
-      "size": "1Gi", "expose": true },
-    { "name": "tlscert", "mount_path": "/tlscert", "kind": "secret", "secret_name": "mytls", "expose": true}
-  ]
+    "volumes": [
+          { "name": "badvol", "mount_path": "/badvol" }
+    ]
 }
