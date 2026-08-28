@@ -1,5 +1,5 @@
 {
-              "volumes": [
-                              { "name": "diskonworker", "mount_path": "/diskonworker", "kind": "disk", "size": "1Gi" }
-              ]
+    "volumes": [
+          { "name": "diskoncron", "mount_path": "/diskoncron", "kind": "disk", "size": "1Gi" }
+    ]
 }
