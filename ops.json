@@ -1,5 +1,5 @@
 {
-            "volumes": [
-                          { "name": "tmpfiles", "mount_path": "/tmpfiles", "kind": "disk", "size": "1Gi" }
-            ]
+              "volumes": [
+                              { "name": "diskonworker", "mount_path": "/diskonworker", "kind": "disk", "size": "1Gi" }
+              ]
 }
