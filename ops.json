@@ -1,5 +1,5 @@
 {
-              "volumes": [
-                              { "name": "diskoncron", "mount_path": "/diskoncron", "kind": "disk", "size": "1Gi" }
-              ]
+    "volumes": [
+          { "name": "secretonjob", "mount_path": "/secretonjob", "kind": "secret", "secret_name": "mytls" }
+    ]
 }
