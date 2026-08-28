@@ -1,5 +1,5 @@
 {
-            "volumes": [
-                          { "name": "memwithsecret", "mount_path": "/memwithsecret", "kind": "mem", "secret_name": "shouldnotbehere" }
-            ]
+              "volumes": [
+                              { "name": "memwithexpose", "mount_path": "/memwithexpose", "kind": "mem", "expose": true }
+              ]
 }
