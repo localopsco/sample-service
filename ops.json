@@ -1,5 +1,5 @@
 {
-          "volumes": [
-                      { "name": "badsize", "mount_path": "/badsize", "kind": "disk", "size": "abc" }
-          ]
+            "volumes": [
+                          { "name": "secretwithsize", "mount_path": "/secretwithsize", "kind": "secret", "secret_name": "mytls", "size": "10Gi" }
+            ]
 }
