@@ -1,6 +1,5 @@
 {
-    "volumes": [
-          { "name": "volone", "mount_path": "/dupmount", "kind": "mem" },
-          { "name": "voltwo", "mount_path": "/dupmount", "kind": "mem" }
-    ]
+      "volumes": [
+              { "name": "Bad_Name", "mount_path": "/badname", "kind": "mem" }
+      ]
 }
