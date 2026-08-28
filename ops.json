@@ -1,5 +1,5 @@
 {
-        "volumes": [
-                  { "name": "nosizedisk", "mount_path": "/nosizedisk", "kind": "disk" }
-        ]
+          "volumes": [
+                      { "name": "nosecretname", "mount_path": "/nosecretname", "kind": "secret" }
+          ]
 }
