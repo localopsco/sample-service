@@ -1,5 +1,5 @@
 {
-        "volumes": [
-                  { "name": "relpath", "mount_path": "relative/path", "kind": "mem" }
-        ]
+          "volumes": [
+                      { "name": "badsize", "mount_path": "/badsize", "kind": "disk", "size": "abc" }
+          ]
 }
