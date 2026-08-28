@@ -1,5 +1,5 @@
 {
-          "volumes": [
-                      { "name": "numsecret", "mount_path": "/numsecret", "kind": "secret", "secret_name": "12345" }
-          ]
+            "volumes": [
+                          { "name": "tmpfiles", "mount_path": "/tmpfiles", "kind": "disk", "size": "1Gi" }
+            ]
 }
