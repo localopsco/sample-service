@@ -1,5 +1,5 @@
 {
-      "volumes": [
-              { "name": "diskoninternal", "mount_path": "/diskoninternal", "kind": "disk", "size": "1Gi" }
-      ]
+        "volumes": [
+                  { "name": "yes", "mount_path": "/yesvol", "kind": "mem" }
+        ]
 }
