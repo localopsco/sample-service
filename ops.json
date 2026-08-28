@@ -1,5 +1,6 @@
 {
-              "volumes": [
-                              { "name": "memwithexpose", "mount_path": "/memwithexpose", "kind": "mem", "expose": true }
-              ]
+    "volumes": [
+          { "name": "dupname", "mount_path": "/dupname1", "kind": "mem" },
+          { "name": "dupname", "mount_path": "/dupname2", "kind": "mem" }
+    ]
 }
