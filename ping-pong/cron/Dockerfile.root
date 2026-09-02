@@ -1,0 +1,25 @@
+# Root variant of ping-pong/cron/Dockerfile, for testing LOC-2204
+# (opscron sidecar v1.0.0 -> 1.1.0).
+#
+# Identical to the default Dockerfile except that it declares no USER, so the
+# container runs as root. Use it when a step in the cron verification needs to
+# install tooling inside the running container -- e.g. `apk add curl` to hit the
+# service's internal DNS name by hand, or to inspect /usr/share/zoneinfo while
+# checking which clock the sidecar schedules against. Under the default image's
+# `USER 1000:1000` those apk installs fail with Permission denied.
+#
+# Point the service's "Dockerfile Path" at this file to run as root. The default
+# Dockerfile stays non-root and is what the actual test should be signed off on.
+
+FROM node:22-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["node", "web.js"]
