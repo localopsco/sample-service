@@ -34,7 +34,6 @@ COPY backend/web.js ./
 # they only resolve if the build context is the repo root, not backend/.
 COPY timestamp.txt ./root-timestamp.txt
 COPY ops.json.sample ./root-ops.json.sample
-COPY CLAUDE.md ./root-CLAUDE.md
 
 # Fails the build loudly if the root-level copies didn't actually land.
 RUN test -s ./root-timestamp.txt && test -s ./root-ops.json.sample && echo "OK: build context is the repo root" && cat ./root-timestamp.txt
