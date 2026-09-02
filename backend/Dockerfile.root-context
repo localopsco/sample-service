@@ -1,0 +1,44 @@
+# Test Dockerfile for LOC-2207 ("Default the Docker build context to the
+# repo root"), PR https://github.com/localopsco/provisioner-service/pull/849
+#
+# This Dockerfile intentionally lives in backend/ - a subdirectory of the
+# repo - but COPYs files that live outside backend/, at the repo root. That
+# only works if the build context is the repo root rather than the
+# directory the Dockerfile itself is in.
+#
+# How to use this against provisioner-service:
+#   1. In the service settings, set "Dockerfile path" to:
+#        backend/Dockerfile.root-context
+#   2. Leave "Build context" UNSET (the new default = repo root).
+#   3. Trigger a build/deploy.
+#
+# Expected with PR #849: the build succeeds - the two COPY lines below that
+# reach outside backend/ resolve fine, and RUN cat prints their contents
+# in the build log.
+#
+# Expected without the fix (pre-#849 behavior, context == Dockerfile's own
+# directory): the build fails at the first "outside backend/" COPY with
+# something like "/timestamp.txt": not found.
+
+FROM node:22-alpine
+
+WORKDIR /app
+
+# Files inside backend/ - the Dockerfile's own directory. These should work
+# regardless of the fix, so a failure here means something else is wrong.
+COPY backend/package*.json ./
+RUN npm install
+COPY backend/web.js ./
+
+# Files at the REPO ROOT - outside backend/. These are the actual assertion:
+# they only resolve if the build context is the repo root, not backend/.
+COPY timestamp.txt ./root-timestamp.txt
+COPY ops.json.sample ./root-ops.json.sample
+COPY CLAUDE.md ./root-CLAUDE.md
+
+# Fails the build loudly if the root-level copies didn't actually land.
+RUN test -s ./root-timestamp.txt && test -s ./root-ops.json.sample && echo "OK: build context is the repo root" && cat ./root-timestamp.txt
+
+EXPOSE 3000
+
+CMD ["node", "web.js"]
