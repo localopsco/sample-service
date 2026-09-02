@@ -1,0 +1,18 @@
+{
+  "cron": {
+    "cron_jobs": [
+      {
+        "schedule": "*/2 * * * *",
+        "path": "/cron/tick"
+      },
+      {
+        "schedule": "*/3 * * * *",
+        "path": "/cron/fail"
+      },
+      {
+        "schedule": "30 10 * * *",
+        "path": "/cron/daily"
+      }
+    ]
+  }
+}

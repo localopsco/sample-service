@@ -1,0 +1,15 @@
+{
+  "name": "ping-pong-cron",
+  "version": "1.0.0",
+  "main": "web.js",
+  "scripts": {
+    "start": "node web.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "Target service for verifying the opscron sidecar (LOC-2204)",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
