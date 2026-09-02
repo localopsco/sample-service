@@ -1,0 +1,27 @@
+# Root variant of ping-pong/web/Dockerfile, for testing LOC-2203
+# (leader-elector 1.0.0 -> 1.1.0).
+#
+# Identical to the default Dockerfile except that it declares no USER, so the
+# container runs as root. The chart's once-job command in the provisioner build
+# on staging still does `apk add jq curl`, which needs root: under the default
+# image's `USER 1000:1000` that fails with Permission denied, jq is missing, the
+# leader lookup returns empty, and the init job skips itself as a non-leader --
+# so the elector is never actually exercised.
+#
+# Point the service's "Dockerfile Path" at this file to run the elector test.
+# The default Dockerfile stays non-root; once staging carries the template that
+# downloads a static jq into the /tmp emptyDir, re-run the test against that one
+# and drop this file.
+
+FROM node:22-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["node", "web.js"]
