@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "rds": {
+      "instances": [
+        {
+          "id": "appdb",
+          "prefix": "appdb",
+          "engine": "postgres",
+          "version": "17.5",
+          "storage_gb": 10,
+          "instance_type": "db.t4g.small",
+          "publicly_accessible": false,
+          "managed_password": true,
+          "exports": {
+            "DATABASE_URL": "$dsn"
+          }
+        }
+      ]
+    }
+  }
+}
