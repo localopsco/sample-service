@@ -1,4 +1,4 @@
 {
     "beam_cluster_id": "b2bapp",
-    "beam_cluster_dns": "frankurt.staging.lops.internal"
+    "beam_dns_name": "frankurt.staging.lops.internal"
 }
