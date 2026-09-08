@@ -1,0 +1,23 @@
+{
+  "unsafe": {
+    "privileged": true
+  },
+  "init": [
+    {
+      "id": "qa-init",
+      "prefix": "privcheck",
+      "image": "busybox:1.36",
+      "cmd": "sh -c 'echo init container ran; sleep 2'",
+      "once": true
+    }
+  ],
+  "processes": [
+    {
+      "id": "qa-worker",
+      "prefix": "privcheck",
+      "image": "busybox:1.36",
+      "cmd": "sh -c 'while true; do echo worker alive; sleep 30; done'",
+      "count": 1
+    }
+  ]
+}
