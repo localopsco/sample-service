@@ -1,0 +1,8 @@
+{ 
+ "request_body_size": 36,
+ "read_timeout": 62,
+ "connection_timeout": 62,
+ "send_timeout": 62
+ "proxy_buffer_size": 18,
+ "proxy_buffers": 18 
+}
