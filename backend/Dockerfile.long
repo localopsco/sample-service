@@ -9,4 +9,4 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ["sh", "-c", "sleep 420 && node web.js"]
+CMD ["node", "doesnotexist.js"]
