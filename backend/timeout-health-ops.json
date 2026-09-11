@@ -1,5 +1,5 @@
 {
-  "deploy_timeout": 720,
+ 
   "health": {
     "http": {
       "path": "/",
