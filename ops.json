@@ -1,0 +1,6 @@
+{
+    "request_body_size": 35,
+    "read_timeout": 61,
+    "connection_timeout": 61,
+    "send_timeout": 61
+}
