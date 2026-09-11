@@ -1,0 +1,12 @@
+{
+  "deploy_timeout": 720,
+  "health": {
+    "http": {
+      "path": "/",
+      "port": 3000
+    },
+    "delay": 5,
+    "interval": 5,
+    "failure_threshold": 3
+  }
+}
