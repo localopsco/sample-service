@@ -3,16 +3,15 @@
     "rds": {
       "instances": [
         {
-          "id": "appdb",
-          "prefix": "appdb",
-          "engine": "postgres",
-          "version": "17.5",
-          "storage_gb": 10,
-          "instance_type": "db.t4g.small",
+          "id": "mssqldb",
+          "prefix": "mssqldb",
+          "engine": "sqlserver-ex",
+          "storage_gb": 20,
+          "instance_type": "db.t3.small",
           "publicly_accessible": false,
           "managed_password": true,
           "exports": {
-            "DATABASE_URL": "$dsn"
+            "MSSQL_URL": "$dsn"
           }
         }
       ]

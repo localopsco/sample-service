@@ -1,6 +1,7 @@
 const express = require('express')
 const { formatRelative } = require("date-fns");
 const promClient = require('prom-client');
+const sqlserver = require('./sqlserver');
 
 const app = express()
 const port = 3000
@@ -20,8 +21,22 @@ const funMessages = [
   "I could've been a database, but I chose a life of service 🫡",
 ]
 
-app.get('/', (req, res) => {
+const escapeHtml = (s) => String(s).replace(/[&<>"']/g, (c) => ({
+  '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+}[c]))
+
+app.get('/', async (req, res) => {
   const message = funMessages[Math.floor(Math.random() * funMessages.length)]
+
+  // Every request writes a row, so ops connect / ops proxy have data to read.
+  let visits
+  try {
+    const total = await sqlserver.recordVisit(message, req.get('User-Agent'))
+    visits = total === null ? 'no SQL Server dependency (MSSQL_URL unset)' : `${total} rows in sampledb.dbo.visits`
+  } catch (err) {
+    console.error("SQL Server write failed:", err.message)
+    visits = `write failed: ${err.message}`
+  }
   console.log("Request received at", new Date().toISOString())
   console.log("x-forwarded-for:", req.get('x-forwarded-for'))
   console.log("x-real-ip:", req.get('x-real-ip'))
@@ -37,10 +52,23 @@ app.get('/', (req, res) => {
 				<tr><td style="padding: 10px; border-bottom: 1px solid #ccd5f7; font-weight: bold; color: #333;">Browser</td><td style="padding: 10px; border-bottom: 1px solid #ccd5f7;">${req.get('User-Agent')}</td></tr>
 				<tr><td style="padding: 10px; border-bottom: 1px solid #ccd5f7; font-weight: bold; color: #333;">IP</td><td style="padding: 10px; border-bottom: 1px solid #ccd5f7;">${req.ip}</td></tr>
 				<tr><td style="padding: 10px; border-bottom: 1px solid #ccd5f7; font-weight: bold; color: #333;">X-Forwarded-For</td><td style="padding: 10px; border-bottom: 1px solid #ccd5f7;">${req.get('x-forwarded-for')}</td></tr>
-				<tr><td style="padding: 10px; font-weight: bold; color: #333;">X-Real-IP</td><td style="padding: 10px;">${req.get('x-real-ip')}</td></tr>
+				<tr><td style="padding: 10px; border-bottom: 1px solid #ccd5f7; font-weight: bold; color: #333;">X-Real-IP</td><td style="padding: 10px; border-bottom: 1px solid #ccd5f7;">${req.get('x-real-ip')}</td></tr>
+				<tr><td style="padding: 10px; font-weight: bold; color: #333;">SQL Server</td><td style="padding: 10px;">${escapeHtml(visits)}</td></tr>
 			</table>
 		</div>
 	`)
+})
+
+app.get('/visits', async (req, res) => {
+  try {
+    const rows = await sqlserver.recentVisits(20)
+    if (rows === null) {
+      return res.status(404).json({ error: 'no SQL Server dependency (MSSQL_URL unset)' })
+    }
+    res.json(rows)
+  } catch (err) {
+    res.status(500).json({ error: err.message })
+  }
 })
 
 app.get('/crash', (req, res) => {

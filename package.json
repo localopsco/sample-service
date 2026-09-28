@@ -12,6 +12,7 @@
   "dependencies": {
     "date-fns": "^4.1.0",
     "express": "^5.1.0",
+    "mssql": "^12.7.2",
     "prom-client": "^15.1.3"
   }
 }
