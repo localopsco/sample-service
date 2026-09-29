@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "elasticache": {
+      "clusters": [
+        {
+          "id": "cache",
+          "prefix": "cache",
+          "engine": "redis",
+          "version": "7.0",
+          "instance_type": "cache.t4g.small",
+          "num_nodes": 1,
+          "exports": {
+            "REDIS_ENDPOINT": "$endpoint",
+            "REDIS_HOST": "$address",
+            "REDIS_PORT": "$port"
+          }
+        }
+      ]
+    }
+  }
+}
