@@ -4,7 +4,7 @@
       "instances": [
         {
           "id": "mssqldb",
-          "prefix": "mssqldb",
+          "prefix": "mssqldb-new",
           "engine": "sqlserver-ex",
           "storage_gb": 20,
           "instance_type": "db.t3.small",
