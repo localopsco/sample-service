@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "rds": {
+      "instances": [{
+        "id": "orders",
+        "engine": "sqlserver-ex",
+        "version": "16.00.4095.4.v1",
+        "instance_type": "db.t3.micro",
+        "storage_gb": 20,
+        "multi_az": false,
+        "exports": {
+          "DB_HOST": "$address",
+          "DB_PORT": "$port",
+          "DB_USER": "$username",
+          "DB_PASSWORD": "$password",
+          "DB_PASSWORD_ARN": "$passwordArn",
+          "DB_DSN": "$dsn"
+        }
+      }]
+    }
+  }
+}
