@@ -1,0 +1,7 @@
+{
+  "autoscaling": {
+    "max_replicas": 4,
+    "target_cpu": 70,
+    "target_memory": 10
+  }
+}
