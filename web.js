@@ -43,6 +43,9 @@ app.get('/', (req, res) => {
 	`)
 })
 
+// CPU load test route for ASG autoscaling testing (busy-waits ?ms= milliseconds, default 200, max 2000)
+app.get('/burn', (req, res) => { const ms = Math.min(parseInt(req.query.ms) || 200, 2000); const end = Date.now() + ms; while (Date.now() < end) {} res.send('burned ' + ms + 'ms') })
+
 app.get('/crash', (req, res) => {
   const fs = require('fs')
   fs.readFileSync('/nonexistent/file/that/does/not/exist.txt')
