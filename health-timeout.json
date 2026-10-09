@@ -1,0 +1,7 @@
+"health": 
+{ 
+  "cmd": ["/bin/sh","-c","exit 0"], 
+  "delay": 30, 
+  "interval": 10, 
+  "timeout": 15 
+}
