@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "gcp:cloudsql": {
+      "instances": [
+        {
+          "id": "main",
+          "engine": "postgres",
+          "version": "15",
+          "tier": "db-custom-1-3840",
+          "disk_gb": 10,
+          "db_name": "appdb",
+          "exports": {
+            "DATABASE_URL": "$dsn",
+            "DB_HOST": "$address",
+            "DB_ENDPOINT": "$endpoint",
+            "DB_USER": "$username",
+            "DB_PASSWORD": "$password",
+            "DB_NAME": "$dbName",
+            "DB_CONNECTION_NAME": "$connectionName"
+          }
+        }
+      ]
+    }
+}
