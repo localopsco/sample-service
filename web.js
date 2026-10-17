@@ -1,6 +1,7 @@
 const express = require('express')
 const { formatRelative } = require("date-fns");
 const promClient = require('prom-client');
+const kafka = require('./kafka');
 
 const app = express()
 const port = 3000
@@ -42,6 +43,8 @@ app.get('/', (req, res) => {
 		</div>
 	`)
 })
+
+kafka.routes(app)
 
 app.get('/crash', (req, res) => {
   const fs = require('fs')
