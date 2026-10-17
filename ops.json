@@ -4,14 +4,7 @@
       "clusters": [
         {
           "id": "events",
-          "type": "provisioned",
-          "version": "3.6.0",
-          "instance_type": "kafka.t3.small",
-          "broker_count": 2,
-          "storage_gb": 20,
-          "parameters": [
-            { "name": "auto.create.topics.enable", "value": "false" }
-          ],
+          "type": "serverless",
           "exports": {
             "KAFKA_NAME": "$name",
             "KAFKA_ARN": "$arn",
@@ -19,10 +12,7 @@
             "KAFKA_PORT": "$port",
             "KAFKA_REGION": "$region",
             "KAFKA_SASL_MECHANISM": "$saslMechanism",
-            "KAFKA_SECURITY_PROTOCOL": "$securityProtocol",
-            "KAFKA_USERNAME": "$username",
-            "KAFKA_PASSWORD": "$password",
-            "KAFKA_PASSWORD_ARN": "$passwordArn"
+            "KAFKA_SECURITY_PROTOCOL": "$securityProtocol"
           }
         }
       ]
