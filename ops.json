@@ -1,6 +1,9 @@
 {
   "autoscaling": {
-    "max_replicas": 5,
-    "target_cpu": 60
+    "max_replicas": 6,
+    "target_cpu": 60,
+    "schedules": [
+      { "days": ["saturday"], "start_time": "23:12", "end_time": "23:22", "timezone": "Asia/Kolkata", "replicas": 3 }
+    ]
   }
 }
