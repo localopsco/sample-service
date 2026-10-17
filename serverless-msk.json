@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "msk": {
+      "clusters": [
+        {
+          "id": "events",
+          "type": "serverless",
+          "exports": {
+            "KAFKA_NAME": "$name",
+            "KAFKA_ARN": "$arn",
+            "KAFKA_BROKERS": "$bootstrapBrokers",
+            "KAFKA_PORT": "$port",
+            "KAFKA_REGION": "$region",
+            "KAFKA_SASL_MECHANISM": "$saslMechanism",
+            "KAFKA_SECURITY_PROTOCOL": "$securityProtocol"
+          }
+        }
+      ]
+    }
+  }
+}
