@@ -1,1 +1,1 @@
-{"autoscaling": {"max_replicas": 4, "target_cpu": 60}}
+{}
