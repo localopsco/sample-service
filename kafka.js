@@ -22,6 +22,9 @@ const env = {
   password: process.env.KAFKA_PASSWORD || '',
 }
 
+// Serverless exports OAUTHBEARER; AWS_MSK_IAM is the name other MSK clients use.
+const iam = ['OAUTHBEARER', 'AWS_MSK_IAM'].includes(env.mechanism)
+
 const state = {
   configured: env.brokers.length > 0,
   consumer: 'not started',
@@ -34,7 +37,7 @@ function sasl() {
   if (env.mechanism === 'SCRAM-SHA-512') {
     return { mechanism: 'scram-sha-512', username: env.username, password: env.password }
   }
-  if (env.mechanism === 'AWS_MSK_IAM') {
+  if (iam) {
     return {
       mechanism: 'oauthbearer',
       oauthBearerProvider: async () => {
@@ -182,8 +185,8 @@ ${row('Mechanism', env.mechanism || '(unset)')}
 ${row('Security protocol', env.protocol || '(unset)')}
 ${row('Bootstrap brokers', env.brokers.join(', ') || '(unset)')}
 ${row('Region', env.region || '(unset)')}
-${row('Username', env.mechanism === 'AWS_MSK_IAM' ? 'n/a (IAM)' : env.username || '(unset)')}
-${row('Password', env.password ? 'set' : (env.mechanism === 'AWS_MSK_IAM' ? 'n/a (IAM)' : '(unset)'))}
+${row('Username', iam ? 'n/a (IAM)' : env.username || '(unset)')}
+${row('Password', env.password ? 'set' : (iam ? 'n/a (IAM)' : '(unset)'))}
 ${row('Consumer', state.consumer + (state.lastError ? ` (${state.lastError})` : ''))}
 ${st.error ? row('Cluster', 'unreachable: ' + st.error) : `
 ${row('Cluster brokers', st.brokers.join(', '))}

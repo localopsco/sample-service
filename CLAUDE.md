@@ -38,6 +38,6 @@ Services read these from the environment at runtime:
 
 `web.js` mounts `/kafka`, a page that validates an ops.json `msk` dependency: cluster brokers, a `lops-msk-check` topic it creates, a publish form, the last 50 consumed messages, and a publish → consume round trip (`POST /kafka/roundtrip`, add `?json` for JSON). JSON views at `/kafka/status` and `/kafka/messages`.
 
-It reads `KAFKA_BROKERS`, `KAFKA_SASL_MECHANISM`, `KAFKA_SECURITY_PROTOCOL`, `KAFKA_REGION`, and for provisioned clusters `KAFKA_USERNAME` / `KAFKA_PASSWORD`. `SCRAM-SHA-512` connects with those credentials; `AWS_MSK_IAM` (serverless) signs an OAUTHBEARER token from the pod's IRSA role via `aws-msk-iam-sasl-signer-js`. Each pod uses its own consumer group so every replica sees every message.
+It reads `KAFKA_BROKERS`, `KAFKA_SASL_MECHANISM`, `KAFKA_SECURITY_PROTOCOL`, `KAFKA_REGION`, and for provisioned clusters `KAFKA_USERNAME` / `KAFKA_PASSWORD`. `SCRAM-SHA-512` connects with those credentials; `OAUTHBEARER` (serverless; `AWS_MSK_IAM` is also accepted) signs an OAUTHBEARER token from the pod's IRSA role via `aws-msk-iam-sasl-signer-js`. Each pod uses its own consumer group so every replica sees every message.
 
 Branches `f-msk-provisioned` and `f-msk-serverless` differ only in `ops.json`.
