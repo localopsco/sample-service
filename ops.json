@@ -1,7 +1,5 @@
 {"autoscaling":{"max_replicas":5,"target_cpu":60,"schedules":[
 {"days":["Monday"],"start_time":"09:00","end_time":"09:30","timezone":"Asia/Kolkata","replicas":2},
 {"days":["TUESDAY"," Wednesday "],"start_time":"10:00","end_time":"10:30","timezone":"Asia/Kolkata","replicas":2},
-{"days":["tHuRsDaY"],"start_time":"11:00","end_time":"11:30","timezone":"Asia/Kolkata","replicas":2},
-{"days":["Mon"],"start_time":"12:00","end_time":"12:30","timezone":"Asia/Kolkata","replicas":2},
-{"days":[],"start_time":"13:00","end_time":"13:30","timezone":"Asia/Kolkata","replicas":2}
+{"days":["tHuRsDaY"],"start_time":"11:00","end_time":"11:30","timezone":"Asia/Kolkata","replicas":2}
 ]}}
