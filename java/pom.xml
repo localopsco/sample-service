@@ -1,0 +1,27 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>co.localops.sample</groupId>
+  <artifactId>msk-java-check</artifactId>
+  <version>1</version>
+  <properties>
+    <maven.compiler.release>21</maven.compiler.release>
+  </properties>
+  <!-- The two dependencies the MSK docs page lists, at the same versions. -->
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.kafka</groupId>
+      <artifactId>kafka-clients</artifactId>
+      <version>3.9.1</version>
+    </dependency>
+    <dependency>
+      <groupId>software.amazon.msk</groupId>
+      <artifactId>aws-msk-iam-auth</artifactId>
+      <version>2.3.9</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>2.0.20</version>
+    </dependency>
+  </dependencies>
+</project>
