@@ -5,7 +5,7 @@
         {
           "id": "events",
           "type": "provisioned",
-          "version": "3.6.0",
+          "version": "3.9.x",
           "instance_type": "kafka.t3.small",
           "broker_count": 2,
           "storage_gb": 20,

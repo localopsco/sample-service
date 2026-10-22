@@ -1,11 +1,11 @@
-// MSK check: connects with whatever the msk dependency exported, keeps a
-// consumer on one topic, and exposes a page to publish and watch messages.
+// MSK check: connects with the credentials the msk dependency exported, keeps
+// a consumer on one topic, and exposes a page to publish and watch messages.
 //
-// Provisioned clusters export SCRAM credentials. Serverless clusters export no
-// credentials at all: the pod's IRSA role signs an OAUTHBEARER token instead.
+// This branch is the username/password sample for a provisioned cluster: it
+// always uses SASL/SCRAM-SHA-512, the only SCRAM variant MSK supports.
+// KAFKA_SASL_MECHANISM is shown on the page but does not pick the auth path.
 const os = require('os')
 const { Kafka, logLevel } = require('kafkajs')
-const { generateAuthToken } = require('aws-msk-iam-sasl-signer-js')
 
 const TOPIC = process.env.KAFKA_TOPIC || 'lops-msk-check'
 // One group per pod, so every replica sees every message and a round trip
@@ -31,19 +31,9 @@ const state = {
 }
 
 function sasl() {
-  if (env.mechanism === 'SCRAM-SHA-512') {
-    return { mechanism: 'scram-sha-512', username: env.username, password: env.password }
-  }
-  if (env.mechanism === 'AWS_MSK_IAM') {
-    return {
-      mechanism: 'oauthbearer',
-      oauthBearerProvider: async () => {
-        const { token } = await generateAuthToken({ region: env.region })
-        return { value: token }
-      },
-    }
-  }
-  throw new Error(`unsupported KAFKA_SASL_MECHANISM ${JSON.stringify(env.mechanism)}`)
+  const missing = ['KAFKA_USERNAME', 'KAFKA_PASSWORD'].filter((k) => !process.env[k])
+  if (missing.length) throw new Error(`${missing.join(' / ')} not set, check the msk dependency exports`)
+  return { mechanism: 'scram-sha-512', username: env.username, password: env.password }
 }
 
 let kafka, producer, admin
@@ -182,8 +172,8 @@ ${row('Mechanism', env.mechanism || '(unset)')}
 ${row('Security protocol', env.protocol || '(unset)')}
 ${row('Bootstrap brokers', env.brokers.join(', ') || '(unset)')}
 ${row('Region', env.region || '(unset)')}
-${row('Username', env.mechanism === 'AWS_MSK_IAM' ? 'n/a (IAM)' : env.username || '(unset)')}
-${row('Password', env.password ? 'set' : (env.mechanism === 'AWS_MSK_IAM' ? 'n/a (IAM)' : '(unset)'))}
+${row('Username', env.username || '(unset)')}
+${row('Password', env.password ? 'set' : '(unset)')}
 ${row('Consumer', state.consumer + (state.lastError ? ` (${state.lastError})` : ''))}
 ${st.error ? row('Cluster', 'unreachable: ' + st.error) : `
 ${row('Cluster brokers', st.brokers.join(', '))}
