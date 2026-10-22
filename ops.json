@@ -1,1 +1,1 @@
-   {"autoscaling":{"max_replicas":5,"target_cpu":60,"schedules":[{"days":["monday"],"start_time":"09:00","end_time":"10:00","timezone":"Asia/Kolkata","replicas":2}]}}
+{"autoscaling":{"max_replicas":10,"target_cpu":0}}
