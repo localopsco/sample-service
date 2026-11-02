@@ -9,7 +9,8 @@
     {
       "id": "perpod",
       "prefix": "perpod",
-      "cmd": "/bin/sh -c 'echo PER-POD-JOB ran on $HOSTNAME'"
+      "image": "alpine:3.20",
+      "cmd": "echo PER-POD-JOB"
     }
   ],
   "autoscaling": {
