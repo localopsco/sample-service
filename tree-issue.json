@@ -1,0 +1,28 @@
+{
+  "init": [
+    {
+      "id": "oncejob",
+      "prefix": "oncejob",
+      "once": true,
+      "cmd": "/bin/sh -c 'echo ONCE-JOB ran on $HOSTNAME at $(date -u); sleep 20'"
+    },
+    {
+      "id": "perpod",
+      "prefix": "perpod",
+      "cmd": "/bin/sh -c 'echo PER-POD-JOB ran on $HOSTNAME'"
+    }
+  ],
+  "autoscaling": {
+    "max_replicas": 5,
+    "target_cpu": 60,
+    "schedules": [
+      {
+        "days": ["monday"],
+        "start_time": "12:30",
+        "end_time": "13:00",
+        "timezone": "Asia/Kolkata",
+        "replicas": 4
+      }
+    ]
+  }
+}
