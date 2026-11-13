@@ -1,0 +1,20 @@
+{
+    "cron": {
+        "cron_jobs": [
+            {
+                "schedule": "*/2 * * * *",
+                "path": "/"
+            }
+        ]
+    },
+
+  "init": [
+    {
+      "type": "job",
+      "id": "migrate",
+      "prefix": "migrate",
+      "cmd": "node job.js",
+      "once": true
+    }
+  ]    
+}
